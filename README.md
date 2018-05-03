@@ -21,3 +21,9 @@ This will initialize all directories if they don't exist, download raw data,
 create the meta-data file. The output data are stored under:
 
     /data
+
+
+
+## Contributors
+
+Simon Hilpert, Martin Söthe, Clemens Wingenbach
