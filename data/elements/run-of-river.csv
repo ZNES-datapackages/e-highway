@@ -1,0 +1,13 @@
+name;capacity;type;bus;dispatchable;tech;output_edge_parameters
+run-of-river-AT;7401.1559;generator;AT-electricity;True;run-of-river;{"summed_max": 1834.1838870331794}
+run-of-river-BE;331.9722;generator;BE-electricity;True;run-of-river;{"summed_max": 801.214895705122}
+run-of-river-CH;4122.7012;generator;CH-electricity;True;run-of-river;{"summed_max": 2297.15090334559}
+run-of-river-CZ;454.8464;generator;CZ-electricity;True;run-of-river;{"summed_max": 1184.7454237810766}
+run-of-river-DE;4233.0194;generator;DE-electricity;True;run-of-river;{"summed_max": 3504.713845629906}
+run-of-river-DK;13.3102;generator;DK-electricity;True;run-of-river;{"summed_max": 1682.938978742075}
+run-of-river-FR;10318.6219;generator;FR-electricity;True;run-of-river;{"summed_max": 1634.5565933534767}
+run-of-river-LU;149.2032;generator;LU-electricity;True;run-of-river;{"summed_max": 1682.938978742075}
+run-of-river-NL;104.4347;generator;NL-electricity;True;run-of-river;{"summed_max": 911.2163254167432}
+run-of-river-NO;28140.972;generator;NO-electricity;True;run-of-river;{"summed_max": 1822.0374877087168}
+run-of-river-PL;2078.7976;generator;PL-electricity;True;run-of-river;{"summed_max": 896.8909094372642}
+run-of-river-SE;10775.2278;generator;SE-electricity;True;run-of-river;{"summed_max": 1942.679516009677}

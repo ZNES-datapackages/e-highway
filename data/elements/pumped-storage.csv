@@ -1,0 +1,10 @@
+name;capacity;power;bus;marginal_cost;type;tech;efficiency;loss
+pumped-storage-AT;1655669.999999994;10732.999999999021;AT-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-BE;12000.0;2308.0;BE-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-CH;650000.0000000001;5443.0;CH-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-CZ;10942.000000000087;1787.0000000000146;CZ-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-DE;91223.9999999944;12798.999999999069;DE-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-FR;594591.9999999981;13419.999999999696;FR-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-LU;10640.101015646445;1650.6835026077408;LU-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-NO;121130.0000000083;17291.00000000138;NO-electricity;0;storage;pumped-storage;0.8;0
+pumped-storage-PL;72358.00000000068;3790.0000000001155;PL-electricity;0;storage;pumped-storage;0.8;0

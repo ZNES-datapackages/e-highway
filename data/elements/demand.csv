@@ -1,0 +1,13 @@
+name;profile;type;tech;bus;amount
+demand-AT;demand-AT-profile;demand;demand;AT-electricity;84824775.8
+demand-BE;demand-BE-profile;demand;demand;BE-electricity;121254664.69999999
+demand-CH;demand-CH-profile;demand;demand;CH-electricity;77330333.89999999
+demand-CZ;demand-CZ-profile;demand;demand;CZ-electricity;71762716.7
+demand-DE;demand-DE-profile;demand;demand;DE-electricity;665704866.0
+demand-DK;demand-DK-profile;demand;demand;DK-electricity;42667480.199999996
+demand-FR;demand-FR-profile;demand;demand;FR-electricity;649446542.0
+demand-LU;demand-LU-profile;demand;demand;LU-electricity;7383120.399999999
+demand-NL;demand-NL-profile;demand;demand;NL-electricity;160722564.9
+demand-NO;demand-NO-profile;demand;demand;NO-electricity;102015206.30000001
+demand-PL;demand-PL-profile;demand;demand;PL-electricity;172219885.5
+demand-SE;demand-SE-profile;demand;demand;SE-electricity;131556725.5

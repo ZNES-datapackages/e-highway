@@ -1,0 +1,902 @@
+{
+    "name": "e-highway-X7-simple",
+    "profile": "data-package",
+    "resources": [
+        {
+            "path": "data/elements/bus.csv",
+            "name": "bus",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "geometry",
+                        "type": "string",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://ec.europa.eu/eurostat/cache/GISCO/geodatafiles/NUTS_2013_10M_SH.zip",
+                    "files": [
+                        "NUTS_2013_10M_SH/data/NUTS_RG_10M_2013.shp",
+                        "NUTS_2013_10M_SH/data/NUTS_RG_10M_2013.dbf"
+                    ],
+                    "title": "NUTS Shapefiles"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Energy system hubs for DE and its electrical neighbours",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Contains the hubs (nodes) for the energy system representation",
+            "format": "csv"
+        },
+        {
+            "path": "data/sequences/demand-profiles.csv",
+            "name": "demand-profiles",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "timeindex",
+                        "type": "datetime",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-LU-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-NL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-DK-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-SE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-PL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-CZ-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-AT-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-NO-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-BE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-FR-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-CH-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "demand-DE-profile",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "timeindex",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "https://data.open-power-system-data.org/time_series/2017-07-09/time_series_60min_singleindex.csv",
+                    "title": "OPSD timeseries"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Demand profiles",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Demand profiles per country",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/shortage.csv",
+            "name": "shortage",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "integer",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "integer",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "profile": "tabular-data-resource",
+            "title": "Shortage slacks for DE and its electrical neighbours",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Shortage slacks for each electricity hub in the energy system representation",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/reservoir.csv",
+            "name": "reservoir",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "dispatchable",
+                        "type": "boolean",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "integer",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "output_edge_parameters",
+                        "type": "object",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "https://zenodo.org/record/804244/files/Hydro_Inflow.zip",
+                    "title": "Restore 2050 hydro inflow timeseries"
+                },
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                },
+                {
+                    "path": "https://www.diw.de/documents/publikationen/73/diw_01.c.424566.de/diw_datadoc_2013-068.pdf",
+                    "title": "DIW Berlin - Current and Prospective Costs of Electricity Generation until 2050"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Reservoir components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/pumped-storage.csv",
+            "name": "pumped-storage",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "power",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "integer",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "efficiency",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "loss",
+                        "type": "integer",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Pumped-Storage components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/dispatchable-generator.csv",
+            "name": "dispatchable-generator",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "integer",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "edge_parameters",
+                        "type": "object",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Dispatchable-Generator components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/transshipment.csv",
+            "name": "transshipment",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "from_bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    },
+                    {
+                        "fields": "to_bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "to_bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "loss",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "from_bus",
+                        "type": "string",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway_database_per_country-08022016.xlsx",
+                    "title": "E-Highway 2050 transmission capacities"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Installed transmission capacities",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed transmission capacities from the e-highway 2050 scenario",
+            "format": "csv"
+        },
+        {
+            "path": "data/sequences/generator-profiles.csv",
+            "name": "generator-profiles",
+            "schema": {
+                "fields": [
+                    {
+                        "name": "timeindex",
+                        "type": "datetime",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-LU-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-NL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-DK-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-SE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-PL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-CZ-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-AT-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-NO-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-BE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-FR-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-CH-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "pv-DE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-LU-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-NL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-DK-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-SE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-PL-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-CZ-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-AT-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-NO-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-BE-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-FR-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-CH-profile",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "wind-DE-profile",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "timeindex",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "https://www.renewables.ninja/static/downloads/ninja_europe_wind_v1.1.zip",
+                    "title": "Renewables Ninja Wind Capacity Factors"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Wind profiles",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Wind profiles (capacity factors) from renewables ninja for each country",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/volatile-generator.csv",
+            "name": "volatile-generator",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    },
+                    {
+                        "fields": "profile",
+                        "reference": {
+                            "resource": "generator-profiles"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "dispatchable",
+                        "type": "boolean",
+                        "format": "default"
+                    },
+                    {
+                        "name": "profile",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Volatile-Generator components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/excess.csv",
+            "name": "excess",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "marginal_cost",
+                        "type": "integer",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "profile": "tabular-data-resource",
+            "title": "Excess slacks for DE and its electrical neighbours",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Excess slacks for each electricity hub in the energy system representation",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/demand.csv",
+            "name": "demand",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    },
+                    {
+                        "fields": "profile",
+                        "reference": {
+                            "resource": "demand-profiles"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "profile",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "amount",
+                        "type": "number",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Demand components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        },
+        {
+            "path": "data/elements/run-of-river.csv",
+            "name": "run-of-river",
+            "schema": {
+                "foreignKeys": [
+                    {
+                        "fields": "bus",
+                        "reference": {
+                            "fields": "name",
+                            "resource": "bus"
+                        }
+                    }
+                ],
+                "fields": [
+                    {
+                        "name": "name",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "capacity",
+                        "type": "number",
+                        "format": "default"
+                    },
+                    {
+                        "name": "type",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "bus",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "dispatchable",
+                        "type": "boolean",
+                        "format": "default"
+                    },
+                    {
+                        "name": "tech",
+                        "type": "string",
+                        "format": "default"
+                    },
+                    {
+                        "name": "output_edge_parameters",
+                        "type": "object",
+                        "format": "default"
+                    }
+                ],
+                "primaryKey": "name",
+                "missingValues": [
+                    ""
+                ]
+            },
+            "sources": [
+                {
+                    "path": "https://zenodo.org/record/804244/files/Hydro_Inflow.zip",
+                    "title": "Restore 2050 hydro inflow timeseries"
+                },
+                {
+                    "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx",
+                    "title": "E-Highway 2050 installed capacities"
+                },
+                {
+                    "path": "https://www.diw.de/documents/publikationen/73/diw_01.c.424566.de/diw_datadoc_2013-068.pdf",
+                    "title": "DIW Berlin - Current and Prospective Costs of Electricity Generation until 2050"
+                }
+            ],
+            "profile": "tabular-data-resource",
+            "title": "Run-Of-River components",
+            "mediatype": "text/csv",
+            "encoding": "utf-8",
+            "description": "Installed capacities, costs and technical parameters for components",
+            "format": "csv"
+        }
+    ]
+}

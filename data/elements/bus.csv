@@ -1,0 +1,13 @@
+name;type;geometry
+LU-electricity;bus;LU-electricity
+NL-electricity;bus;NL-electricity
+DK-electricity;bus;DK-electricity
+SE-electricity;bus;SE-electricity
+PL-electricity;bus;PL-electricity
+CZ-electricity;bus;CZ-electricity
+AT-electricity;bus;AT-electricity
+NO-electricity;bus;NO-electricity
+BE-electricity;bus;BE-electricity
+FR-electricity;bus;FR-electricity
+CH-electricity;bus;CH-electricity
+DE-electricity;bus;DE-electricity

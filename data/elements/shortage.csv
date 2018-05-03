@@ -1,0 +1,13 @@
+name;bus;type;capacity;marginal_cost
+shortage-LU;LU-electricity;generator;50000;1000
+shortage-NL;NL-electricity;generator;50000;1000
+shortage-DK;DK-electricity;generator;50000;1000
+shortage-SE;SE-electricity;generator;50000;1000
+shortage-PL;PL-electricity;generator;50000;1000
+shortage-CZ;CZ-electricity;generator;50000;1000
+shortage-AT;AT-electricity;generator;50000;1000
+shortage-NO;NO-electricity;generator;50000;1000
+shortage-BE;BE-electricity;generator;50000;1000
+shortage-FR;FR-electricity;generator;50000;1000
+shortage-CH;CH-electricity;generator;50000;1000
+shortage-DE;DE-electricity;generator;50000;1000
