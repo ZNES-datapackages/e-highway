@@ -1,0 +1,13 @@
+name;bus;type;marginal_cost
+excess-LU;LU-electricity;excess;0
+excess-NL;NL-electricity;excess;0
+excess-DK;DK-electricity;excess;0
+excess-SE;SE-electricity;excess;0
+excess-PL;PL-electricity;excess;0
+excess-CZ;CZ-electricity;excess;0
+excess-AT;AT-electricity;excess;0
+excess-NO;NO-electricity;excess;0
+excess-BE;BE-electricity;excess;0
+excess-FR;FR-electricity;excess;0
+excess-CH;CH-electricity;excess;0
+excess-DE;DE-electricity;excess;0

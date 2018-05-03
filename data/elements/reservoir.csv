@@ -1,0 +1,13 @@
+name;capacity;bus;dispatchable;marginal_cost;type;tech;output_edge_parameters
+reservoir-AT;5675.9999999995325;AT-electricity;True;0;generator;reservoir;{"summed_max": 1834.1838870331794}
+reservoir-BE;0.0;BE-electricity;True;0;generator;reservoir;{"summed_max": 801.214895705122}
+reservoir-CH;8129.99999999843;CH-electricity;True;0;generator;reservoir;{"summed_max": 2297.15090334559}
+reservoir-CZ;819.0000000000017;CZ-electricity;True;0;generator;reservoir;{"summed_max": 1184.7454237810766}
+reservoir-DE;0.0;DE-electricity;True;0;generator;reservoir;{"summed_max": 3504.713845629906}
+reservoir-DK;0.0;DK-electricity;True;0;generator;reservoir;{"summed_max": 1682.938978742075}
+reservoir-FR;18200.00000000006;FR-electricity;True;0;generator;reservoir;{"summed_max": 1634.5565933534767}
+reservoir-LU;0.0;LU-electricity;True;0;generator;reservoir;{"summed_max": 1682.938978742075}
+reservoir-NL;0.0;NL-electricity;True;0;generator;reservoir;{"summed_max": 911.2163254167432}
+reservoir-NO;42472.9999999925;NO-electricity;True;0;generator;reservoir;{"summed_max": 1822.0374877087168}
+reservoir-PL;0.0;PL-electricity;True;0;generator;reservoir;{"summed_max": 896.8909094372642}
+reservoir-SE;21383.25306375192;SE-electricity;True;0;generator;reservoir;{"summed_max": 1942.679516009677}
