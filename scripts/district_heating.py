@@ -98,7 +98,7 @@ building.write_elements(
         'GL-gas': {
             'type': 'bus',
             'balanced': False,
-            'geomtry': None
+            'geometry': None
             }
         }, orient='index'))
 

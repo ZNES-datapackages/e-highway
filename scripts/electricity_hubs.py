@@ -54,6 +54,7 @@ for r in config['countries']:
 
 hub_elements = pd.DataFrame(hubs).drop('geometry' ,axis=1)
 hub_elements.loc[:, 'type'] = 'bus'
+hub_elements.loc[:, 'balanced'] = True
 hub_elements.loc[:, 'geometry'] = hubs.index
 
 building.write_geometries('bus.geojson', hubs)
