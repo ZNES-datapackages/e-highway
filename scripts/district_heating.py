@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 """
+
+from datapackage import Resource
 import pandas as pd
 from datapackage_utilities import building
 
@@ -25,6 +27,64 @@ def annuity(capex, n, wacc):
     """
     return capex * (wacc * (1 + wacc) ** n) / ((1 + wacc) ** n - 1)
 
+
+def create_resource_path(path):
+    """
+    """
+    r = Resource({'path': path})
+    r.infer()
+
+    if 'storage' in r.name  or 'district-heat-demand' == r.name or 'boiler' in r.name:
+        r.descriptor['schema']['foreignKeys'] =   [{
+            "fields": "bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}}]
+
+    if 'backpressure' in r.name:
+        r.descriptor['schema']['foreignKeys'] =   [
+            {
+            "fields": "electricity_bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}
+            },
+            {
+            "fields": "heat_bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}
+            },
+            {
+            "fields": "fuel_bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}
+            }]
+
+    if 'power-to-heat' in r.name:
+        r.descriptor['schema']['foreignKeys'] = [
+            {
+            "fields": "from_bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}
+            },
+            {
+            "fields": "to_bus",
+            "reference": {
+                "resource": "bus",
+                "fields": "name"}
+            }]
+
+    if 'district-heat-demand' == r.name:
+        r.descriptor['schema']['foreignKeys'].append({
+            "fields": "profile",
+            "reference": {
+                "resource": "demand-profiles"}})
+
+    r.commit()
+    r.save('resources/' + r.name + '.json')
 
 config = building.get_config()
 
@@ -57,9 +117,10 @@ p2h_elements = {
         'investment_cost': investment_cost['power-to-heat'],
         'capacity': None}}
 
-building.write_elements(
+path = building.write_elements(
     'power-to-heat.csv',
     pd.DataFrame.from_dict(p2h_elements, orient='index'))
+create_resource_path(path)
 
 backpressure = {
     'backpressure-DE': {
@@ -74,9 +135,10 @@ backpressure = {
         'investment_cost': investment_cost['gas-backpressure'],
         'capacity': None}}
 
-building.write_elements(
+path = building.write_elements(
     'backpressure.csv',
     pd.DataFrame.from_dict(backpressure, orient='index'))
+create_resource_path(path)
 
 heat_storage = {
     'heat-storage-DE': {
@@ -89,9 +151,10 @@ heat_storage = {
         'investment_cost': investment_cost['heat-storage'],
         'capacity': None}}
 
-building.write_elements(
+path = building.write_elements(
     'heat-storage.csv',
     pd.DataFrame.from_dict(heat_storage, orient='index'))
+create_resource_path(path)
 
 boiler = {
     'boiler-DE': {
@@ -104,9 +167,10 @@ boiler = {
         'profile': None,
         'capacity': None}}
 
-building.write_elements(
+path = building.write_elements(
     'boiler.csv',
     pd.DataFrame.from_dict(boiler, orient='index'))
+create_resource_path(path)
 
 district_heat_demand = {
     'district-heat-demand-DE': {
@@ -115,9 +179,10 @@ district_heat_demand = {
         'amount': 190 * 1e6, # 190.000.000 MWh i.e. 190 TWh
         'profile': 'district-heat-demand-DE-profile'}}
 
-building.write_elements(
+path = building.write_elements(
     'district-heat-demand.csv',
     pd.DataFrame.from_dict(district_heat_demand, orient='index'))
+create_resource_path(path)
 
 
 heat_demand_profile = pd.Series(
@@ -126,3 +191,4 @@ heat_demand_profile = pd.Series(
 heat_demand_profile.rename('district-heat-demand-DE-profile', inplace=True)
 
 path = building.write_sequences('heat-demand-profiles.csv', heat_demand_profile)
+create_resource_path(path)
