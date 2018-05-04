@@ -4,13 +4,50 @@
 import pandas as pd
 from datapackage_utilities import building
 
-# TODO:
-# Add: Heat bus, fuel bus, investment costs, heat profile
+def annuity(capex, n, wacc):
+    """Calculate the annuity.
+
+    annuity = capex * (wacc * (1 + wacc) ** n) / ((1 + wacc) ** n - 1)
+
+    Parameters
+    ----------
+    capex : float
+        Capital expenditure (NPV of investment)
+    n : int
+        Number of years that the investment is used (economic lifetime)
+    wacc : float
+        Weighted average cost of capital
+
+    Returns
+    -------
+    float : annuity
+
+    """
+    return capex * (wacc * (1 + wacc) ** n) / ((1 + wacc) ** n - 1)
+
+
+config = building.get_config()
+
+building.write_elements(
+    'bus.csv',
+    pd.DataFrame.from_dict({
+        'DE-heat': {
+            'type': 'bus',
+            'geometry': None
+            },
+        'GL-gas': {
+            'type': 'bus',
+            'balanced': False,
+            'geomtry': None
+            }
+        }, orient='index'))
+
+
 investment_cost = {
-    'heat-storage': 1000,
-    'power-to-heat': 1000,
-    'gas-backpressure': 1000,
-    'gas-boiler': 1000}
+    'heat-storage': annuity(capex=1000, n=20, wacc=0.05),
+    'power-to-heat': annuity(capex=400, n=20, wacc=0.05),
+    'gas-backpressure': annuity(capex=1000, n=20, wacc=0.05),
+    'gas-boiler': annuity(capex=100, n=20, wacc=0.05)}
 
 p2h_elements = {
     'p2h': {
@@ -27,9 +64,12 @@ building.write_elements(
 backpressure = {
     'backpressure-DE': {
         'type': 'backpressure',
-        'fuel_bus': 'DE-heat',
+        'fuel_bus': 'GL-gas',
+        'fuel_cost': 80,
         'electricity_bus': 'DE-electricity',
         'heat_bus': 'DE-heat',
+        'thermal_efficiency': 0.4,
+        'electrical_efficiency': 0.4,
         'tech': 'gas-backpressure',
         'investment_cost': investment_cost['gas-backpressure'],
         'capacity': None}}
@@ -44,7 +84,8 @@ heat_storage = {
         'bus': 'DE-heat',
         'tech': 'heat-storage',
         'efficiency': 1,
-        'loss': 0.05,
+        'loss': 0.0,
+        'ep_ratio': 1/6,
         'investment_cost': investment_cost['heat-storage'],
         'capacity': None}}
 
@@ -58,6 +99,7 @@ boiler = {
         'bus': 'DE-heat',
         'tech': 'gas-boiler',
         'efficiency': 0.9,
+        'marginal_cost': 80 / 0.9,
         'investment_cost': investment_cost['gas-boiler'],
         'profile': None,
         'capacity': None}}
@@ -76,3 +118,11 @@ district_heat_demand = {
 building.write_elements(
     'district-heat-demand.csv',
     pd.DataFrame.from_dict(district_heat_demand, orient='index'))
+
+
+heat_demand_profile = pd.Series(
+    data=0.5,
+    index=pd.date_range(str(config['year']), periods=8760, freq='H'))
+heat_demand_profile.rename('district-heat-demand-DE-profile', inplace=True)
+
+path = building.write_sequences('heat-demand-profiles.csv', heat_demand_profile)
