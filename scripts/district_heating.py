@@ -81,18 +81,20 @@ def create_resource_path(path):
         r.descriptor['schema']['foreignKeys'].append({
             "fields": "profile",
             "reference": {
-                "resource": "demand-profiles"}})
+                "resource": "heat-demand-profiles"}})
 
     r.commit()
     r.save('resources/' + r.name + '.json')
 
 config = building.get_config()
 
+
 building.write_elements(
     'bus.csv',
     pd.DataFrame.from_dict({
         'DE-heat': {
             'type': 'bus',
+            'balanced': True,
             'geometry': None
             },
         'GL-gas': {
@@ -104,15 +106,16 @@ building.write_elements(
 
 
 investment_cost = {
-    'heat-storage': annuity(capex=1000, n=20, wacc=0.05),
-    'power-to-heat': annuity(capex=400, n=20, wacc=0.05),
-    'gas-backpressure': annuity(capex=1000, n=20, wacc=0.05),
-    'gas-boiler': annuity(capex=100, n=20, wacc=0.05)}
+    'heat-storage': annuity(capex=1000*1e3, n=20, wacc=0.05),
+    'power-to-heat': annuity(capex=400*1e3, n=20, wacc=0.05),
+    'gas-backpressure': annuity(capex=1000*1e3, n=20, wacc=0.05),
+    'gas-boiler': annuity(capex=100*1e3, n=20, wacc=0.05)}
 
 p2h_elements = {
     'p2h': {
         'type': 'conversion',
-        'bus': 'DE-heat',
+        'from_bus': 'DE-electricity',
+        'to_bus': 'DE-heat',
         'tech': 'power-to-heat',
         'investment_cost': investment_cost['power-to-heat'],
         'capacity': None}}
@@ -130,7 +133,7 @@ backpressure = {
         'electricity_bus': 'DE-electricity',
         'heat_bus': 'DE-heat',
         'thermal_efficiency': 0.4,
-        'electrical_efficiency': 0.4,
+        'electric_efficiency': 0.4,
         'tech': 'gas-backpressure',
         'investment_cost': investment_cost['gas-backpressure'],
         'capacity': None}}
@@ -142,7 +145,7 @@ create_resource_path(path)
 
 heat_storage = {
     'heat-storage-DE': {
-        'type': 'heat_storage',
+        'type': 'storage',
         'bus': 'DE-heat',
         'tech': 'heat-storage',
         'efficiency': 1,
@@ -186,7 +189,7 @@ create_resource_path(path)
 
 
 heat_demand_profile = pd.Series(
-    data=0.5,
+    data=pd.read_csv('archive/thermal_load_profile.csv', sep=";")['thermal_load'].values,
     index=pd.date_range(str(config['year']), periods=8760, freq='H'))
 heat_demand_profile.rename('district-heat-demand-DE-profile', inplace=True)
 
