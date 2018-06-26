@@ -8,7 +8,7 @@ click==6.7
 cryptography==2.1.4
 datapackage==1.2.1
 decorator==4.1.2
--e git+https://github.com/znes/datapackage-utilities.git@v0.1#egg=datapackage-utilities
+-e git+https://github.com/znes/datapackage-utilities.git@v0.1.1#egg=datapackage-utilities
 et-xmlfile==1.0.1
 geojson==2.3.0
 geojsonio==0.0.3
