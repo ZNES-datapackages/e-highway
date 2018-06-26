@@ -54,15 +54,32 @@ def remove_links(row):
 
 config = building.get_config()
 
-filepath = building.download_data(
-    'http://www.e-highway2050.eu/fileadmin/documents/' +
-    'Results/e-Highway_database_per_country-08022016.xlsx')
+filename = 'e-Highway_database_per_country-08022016.xlsx'
 
-df_2030 = pd.read_excel(filepath, sheet_name='T93', index_col=[1],
-                        skiprows=[0, 1, 3]).fillna(0)
+filepath = os.path.join('archive', filename)
 
-df_2050 = pd.read_excel(filepath, sheet_name='T94', index_col=[1],
-                        skiprows=[0, 1, 3]).fillna(0)
+if os.path.exists(filepath):
+    # if file exist in archive use this file
+    df_2030 = pd.read_excel(filepath, sheet_name='T93', index_col=[1],
+                            skiprows=[0, 1, 3]).fillna(0)
+
+    df_2050 = pd.read_excel(filepath, sheet_name='T94', index_col=[1],
+                            skiprows=[0, 1, 3]).fillna(0)
+else:
+    # if file does not exist, try to download and check if valid xlsx file
+    logging.info('File for e-Highway capacities does not exist. Download..')
+    filepath = building.download_data(
+        'http://www.e-highway2050.eu/fileadmin/documents/'  +
+        filename)
+    try:
+        book = open_workbook(filepath)
+        df_2030 = pd.read_excel(filepath, sheet_name='T93', index_col=[1],
+                                skiprows=[0, 1, 3]).fillna(0)
+
+        df_2050 = pd.read_excel(filepath, sheet_name='T94', index_col=[1],
+                                skiprows=[0, 1, 3]).fillna(0)
+    except XLRDError as e:
+        raise XLRDError('Downloaded file not valid xlsx file.')
 
 def _prepare_frame(df):
     """ prepare dataframe

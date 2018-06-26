@@ -1,8 +1,11 @@
 # -*- coding: utf-8 -*-
 """
 """
+import logging
 import json
 import os
+from xlrd import open_workbook, XLRDError
+
 
 from datapackage import Package, Resource
 import pandas as pd
@@ -60,11 +63,22 @@ def create_resource(path):
 
 config = building.get_config()
 
-filepath = building.download_data(
-    'http://www.e-highway2050.eu/fileadmin/documents/Results/'  +
-    'e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx')
+filename = 'e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx'
+filepath = os.path.join('archive', filename)
 
-df = pd.read_excel(filepath, sheet_name='Country_X-7', index_col=[0])
+if os.path.exists(filepath):
+    df = pd.read_excel(filepath, sheet_name='Country_X-7', index_col=[0])
+else:
+    logging.info('File for e-Highway capacities does not exist. Download..')
+    filepath = building.download_data(
+        'http://www.e-highway2050.eu/fileadmin/documents/Results/'  +
+        filename)
+    try:
+        book = open_workbook(filepath)
+        df = pd.read_excel(filepath, sheet_name='Country_X-7', index_col=[0])
+    except XLRDError as e:
+        raise XLRDError('Downloaded file not valid xlsx file.')
+
 
 df = df.loc[config['countries']]
 
@@ -144,7 +158,7 @@ for country in df.index:
 
 
             elif element_type == 'dispatchable-generator':
-                # set restriction on maximal production of biomass units 
+                # set restriction on maximal production of biomass units
                 if tech == 'biomass':
                     edge_parameters = json.dumps({'summed_max': 3500})
                 else:
