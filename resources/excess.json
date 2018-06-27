@@ -1,0 +1,47 @@
+{
+    "path": "data/elements/excess.csv",
+    "profile": "tabular-data-resource",
+    "encoding": "utf-8",
+    "name": "excess",
+    "format": "csv",
+    "mediatype": "text/csv",
+    "schema": {
+        "fields": [
+            {
+                "name": "name",
+                "type": "string",
+                "format": "default"
+            },
+            {
+                "name": "bus",
+                "type": "string",
+                "format": "default"
+            },
+            {
+                "name": "marginal_cost",
+                "type": "integer",
+                "format": "default"
+            },
+            {
+                "name": "type",
+                "type": "string",
+                "format": "default"
+            }
+        ],
+        "missingValues": [
+            ""
+        ],
+        "primaryKey": "name",
+        "foreignKeys": [
+            {
+                "fields": "bus",
+                "reference": {
+                    "resource": "bus",
+                    "fields": "name"
+                }
+            }
+        ]
+    },
+    "description": "Excess slacks for each electricity hub in the energy system representation",
+    "title": "Excess slacks for DE and its electrical neighbours"
+}

@@ -1,0 +1,149 @@
+{
+    "path": "data/sequences/generator-profiles.csv",
+    "profile": "tabular-data-resource",
+    "encoding": "utf-8",
+    "name": "generator-profiles",
+    "format": "csv",
+    "mediatype": "text/csv",
+    "schema": {
+        "fields": [
+            {
+                "name": "timeindex",
+                "type": "datetime",
+                "format": "default"
+            },
+            {
+                "name": "pv-AT-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-BE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-CH-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-CZ-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-DE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-DK-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-FR-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-LU-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-NL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-NO-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-PL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "pv-SE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-AT-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-BE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-CH-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-CZ-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-DE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-DK-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-FR-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-LU-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-NL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-NO-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-PL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "wind-SE-profile",
+                "type": "number",
+                "format": "default"
+            }
+        ],
+        "missingValues": [
+            ""
+        ],
+        "primaryKey": "timeindex"
+    },
+    "description": "Wind profiles (capacity factors) from renewables ninja for each country",
+    "title": "Wind profiles",
+    "sources": [
+        {
+            "title": "Renewables Ninja Wind Capacity Factors",
+            "path": "https://www.renewables.ninja/static/downloads/ninja_europe_wind_v1.1.zip"
+        }
+    ]
+}

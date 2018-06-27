@@ -1,0 +1,81 @@
+{
+    "path": "data/elements/reservoir.csv",
+    "profile": "tabular-data-resource",
+    "encoding": "utf-8",
+    "name": "reservoir",
+    "format": "csv",
+    "mediatype": "text/csv",
+    "schema": {
+        "fields": [
+            {
+                "name": "name",
+                "type": "string",
+                "format": "default"
+            },
+            {
+                "name": "bus",
+                "type": "string",
+                "format": "default"
+            },
+            {
+                "name": "capacity",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "dispatchable",
+                "type": "boolean",
+                "format": "default"
+            },
+            {
+                "name": "marginal_cost",
+                "type": "integer",
+                "format": "default"
+            },
+            {
+                "name": "output_edge_parameters",
+                "type": "object",
+                "format": "default"
+            },
+            {
+                "name": "tech",
+                "type": "string",
+                "format": "default"
+            },
+            {
+                "name": "type",
+                "type": "string",
+                "format": "default"
+            }
+        ],
+        "missingValues": [
+            ""
+        ],
+        "primaryKey": "name",
+        "foreignKeys": [
+            {
+                "fields": "bus",
+                "reference": {
+                    "resource": "bus",
+                    "fields": "name"
+                }
+            }
+        ]
+    },
+    "description": "Installed capacities, costs and technical parameters for components",
+    "title": "Reservoir components",
+    "sources": [
+        {
+            "title": "Restore 2050 hydro inflow timeseries",
+            "path": "https://zenodo.org/record/804244/files/Hydro_Inflow.zip"
+        },
+        {
+            "title": "E-Highway 2050 installed capacities",
+            "path": "http://www.e-highway2050.eu/fileadmin/documents/Results/e-Highway2050_2050_Country_and_cluster_installed_capacities_31-03-2015.xlsx"
+        },
+        {
+            "title": "DIW Berlin - Current and Prospective Costs of Electricity Generation until 2050",
+            "path": "https://www.diw.de/documents/publikationen/73/diw_01.c.424566.de/diw_datadoc_2013-068.pdf"
+        }
+    ]
+}

@@ -1,0 +1,89 @@
+{
+    "path": "data/sequences/demand-profiles.csv",
+    "profile": "tabular-data-resource",
+    "encoding": "utf-8",
+    "name": "demand-profiles",
+    "format": "csv",
+    "mediatype": "text/csv",
+    "schema": {
+        "fields": [
+            {
+                "name": "timeindex",
+                "type": "datetime",
+                "format": "default"
+            },
+            {
+                "name": "demand-AT-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-BE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-CH-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-CZ-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-DE-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-DK-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-FR-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-LU-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-NL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-NO-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-PL-profile",
+                "type": "number",
+                "format": "default"
+            },
+            {
+                "name": "demand-SE-profile",
+                "type": "number",
+                "format": "default"
+            }
+        ],
+        "missingValues": [
+            ""
+        ],
+        "primaryKey": "timeindex"
+    },
+    "description": "Demand profiles per country",
+    "title": "Demand profiles",
+    "sources": [
+        {
+            "title": "OPSD timeseries",
+            "path": "https://data.open-power-system-data.org/time_series/2017-07-09/time_series_60min_singleindex.csv"
+        }
+    ]
+}
