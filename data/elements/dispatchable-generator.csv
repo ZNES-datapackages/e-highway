@@ -1,25 +1,25 @@
-name;capacity;bus;marginal_cost;type;tech;edge_parameters
-biomass-AT;3500.0;AT-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-BE;4750.0;BE-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-CH;1250.0;CH-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-CZ;5000.0;CZ-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-DE;27750.0;DE-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-DK;3750.0;DK-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-FR;28250.0;FR-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-LU;0.0;LU-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-NL;4000.0;NL-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-NO;500.0;NO-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-PL;14250.0;PL-electricity;80;generator;biomass;{"summed_max": 3500}
-biomass-SE;5500.0;SE-electricity;80;generator;biomass;{"summed_max": 3500}
-octg-AT;1500.0;AT-electricity;130;generator;octg;{}
-octg-BE;2500.0;BE-electricity;130;generator;octg;{}
-octg-CH;2000.0;CH-electricity;130;generator;octg;{}
-octg-CZ;1750.0;CZ-electricity;130;generator;octg;{}
-octg-DE;13000.0;DE-electricity;130;generator;octg;{}
-octg-DK;1000.0;DK-electricity;130;generator;octg;{}
-octg-FR;16000.0;FR-electricity;130;generator;octg;{}
-octg-LU;250.0;LU-electricity;130;generator;octg;{}
-octg-NL;3000.0;NL-electricity;130;generator;octg;{}
-octg-NO;0.0;NO-electricity;130;generator;octg;{}
-octg-PL;3000.0;PL-electricity;130;generator;octg;{}
-octg-SE;0.0;SE-electricity;130;generator;octg;{}
+name;bus;capacity;edge_parameters;marginal_cost;tech;type
+biomass-AT;AT-electricity;3500.0;{"summed_max": 3500};80;biomass;generator
+biomass-BE;BE-electricity;4750.0;{"summed_max": 3500};80;biomass;generator
+biomass-CH;CH-electricity;1250.0;{"summed_max": 3500};80;biomass;generator
+biomass-CZ;CZ-electricity;5000.0;{"summed_max": 3500};80;biomass;generator
+biomass-DE;DE-electricity;27750.0;{"summed_max": 3500};80;biomass;generator
+biomass-DK;DK-electricity;3750.0;{"summed_max": 3500};80;biomass;generator
+biomass-FR;FR-electricity;28250.0;{"summed_max": 3500};80;biomass;generator
+biomass-LU;LU-electricity;0.0;{"summed_max": 3500};80;biomass;generator
+biomass-NL;NL-electricity;4000.0;{"summed_max": 3500};80;biomass;generator
+biomass-NO;NO-electricity;500.0;{"summed_max": 3500};80;biomass;generator
+biomass-PL;PL-electricity;14250.0;{"summed_max": 3500};80;biomass;generator
+biomass-SE;SE-electricity;5500.0;{"summed_max": 3500};80;biomass;generator
+octg-AT;AT-electricity;1500.0;{};130;octg;generator
+octg-BE;BE-electricity;2500.0;{};130;octg;generator
+octg-CH;CH-electricity;2000.0;{};130;octg;generator
+octg-CZ;CZ-electricity;1750.0;{};130;octg;generator
+octg-DE;DE-electricity;13000.0;{};130;octg;generator
+octg-DK;DK-electricity;1000.0;{};130;octg;generator
+octg-FR;FR-electricity;16000.0;{};130;octg;generator
+octg-LU;LU-electricity;250.0;{};130;octg;generator
+octg-NL;NL-electricity;3000.0;{};130;octg;generator
+octg-NO;NO-electricity;0.0;{};130;octg;generator
+octg-PL;PL-electricity;3000.0;{};130;octg;generator
+octg-SE;SE-electricity;0.0;{};130;octg;generator
