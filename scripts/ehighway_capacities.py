@@ -41,13 +41,13 @@ def create_resource(path):
         resource.descriptor['schema']['foreignKeys'] .append({
             "fields": "profile",
             "reference": {
-                "resource": "demand-profiles"}})
+                "resource": "electricity-laod-profiles"}})
 
     elif 'volatile-generator' in resource.name:
         resource.descriptor['schema']['foreignKeys'] .append({
             "fields": "profile",
             "reference": {
-                "resource": "generator-profiles"}})
+                "resource": "volatile-profiles"}})
 
 
 
@@ -97,31 +97,31 @@ dispatchable_mapper = {
     'TOTAL biomass (MW)': 'biomass'}
 
 ror_mapper = {
-    'RoR (MW)': 'run-of-river'}
+    'RoR (MW)': 'ror'}
 
 storage_mapper = {
-    'PSP (MW)': 'pumped-storage'}
+    'PSP (MW)': 'phs'}
 
 reservoir_mapper = {
-    'Hydro with reservoir (MW)': 'reservoir'}
+    'Hydro with reservoir (MW)': 'rs'}
 
 demand_mapper = {
-    'Demand (GWh)': 'demand'}
+    'Demand (GWh)': 'load'}
 
-types = ['volatile-generator', 'dispatchable-generator', 'pumped-storage',
-         'reservoir', 'run-of-river', 'demand']
+types = ['volatile', 'dispatchable', 'pumped-storage',
+         'reservoir', 'run-of-river', 'load']
 
 mappers = dict(zip(types,
                    [volatile_mapper, dispatchable_mapper, storage_mapper,
                     reservoir_mapper, ror_mapper, demand_mapper]))
 
 element_dfs = dict(zip(types,
-                       [building.read_elements('volatile-generator.csv'),
-                        building.read_elements('dispatchable-generator.csv'),
+                       [building.read_elements('volatile.csv'),
+                        building.read_elements('dispatchable.csv'),
                         building.read_elements('pumped-storage.csv'),
                         building.read_elements('reservoir.csv'),
                         building.read_elements('run-of-river.csv'),
-                        building.read_elements('demand.csv')]))
+                        building.read_elements('load.csv')]))
 
 elements = dict(zip(types, [{}, {}, {}, {}, {}, {}]))
 
@@ -139,10 +139,10 @@ for country in df.index:
                 sequence_name = element_name + '-profile'
 
                 elements[element_type][element_name] = {
-                    'type': 'generator',
+                    'type': 'dispatchable',
                     'bus': country + '-electricity',
                     'tech': tech,
-                    'dispatchable': False,
+                    'carrier': tech,
                     'capacity': round(df.at[country, tech_key], 4),
                     'profile':  sequence_name}
 
@@ -150,9 +150,8 @@ for country in df.index:
                 sequence_name = element_name + '-profile'
 
                 elements[element_type][element_name] = {
-                    'type': 'generator',
+                    'type': 'volatile',
                     'bus': country + '-electricity',
-                    'dispatchable': True,
                     'tech': tech,
                     'capacity': round(df.at[country, tech_key], 4)}
 
@@ -167,6 +166,7 @@ for country in df.index:
                 elements[element_type][element_name] = {
                     'type': 'generator',
                     'tech': tech,
+                    'carrier': carrier,
                     'bus': country + '-electricity',
                     'marginal_cost': marginal_cost[tech],
                     'edge_parameters': edge_parameters,
@@ -177,27 +177,28 @@ for country in df.index:
                     elements[element_type][element_name] = {
                         'type': 'storage',
                         'tech': tech,
+                        'carrier': 'water',
                         'bus': country + '-electricity',
                         'marginal_cost': 0,
                         'efficiency': 0.8,
                         'loss': 0,
-                        'power': df.at[country, tech_key],
-                        'capacity': df.at[country, 'PSP reservoir (GWh)'] * 1000}
+                        'capacity': df.at[country, tech_key],
+                        'storage_capacity': df.at[country, 'PSP reservoir (GWh)'] * 1000}
 
             elif element_type == 'reservoir':
                 elements[element_type][element_name] = {
-                    'type': 'generator',
+                    'type': 'dispatchable',
                     'tech': tech,
+                    'carrier': 'water',
                     'bus': country + '-electricity',
                     'capacity': df.at[country, tech_key],
-                    'dispatchable': True,
                     'marginal_cost': marginal_cost['reservoir']}
 
-            elif element_type == 'demand':
+            elif element_type == 'load':
                 sequence_name = element_name + '-profile'
 
                 elements[element_type][element_name] = {
-                    'type': 'demand',
+                    'type': 'load',
                     'tech': tech,
                     'bus': country + '-electricity',
                     'amount': round(df.at[country, tech_key], 4) * 1000,

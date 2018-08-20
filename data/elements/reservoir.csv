@@ -1,13 +1,13 @@
-name;bus;capacity;dispatchable;marginal_cost;output_edge_parameters;tech;type
-reservoir-AT;AT-electricity;5675.9999999995325;True;0;{"summed_max": 1834.1838870331794};reservoir;generator
-reservoir-BE;BE-electricity;0.0;True;0;{"summed_max": 801.214895705122};reservoir;generator
-reservoir-CH;CH-electricity;8129.99999999843;True;0;{"summed_max": 2297.15090334559};reservoir;generator
-reservoir-CZ;CZ-electricity;819.0000000000017;True;0;{"summed_max": 1184.7454237810766};reservoir;generator
-reservoir-DE;DE-electricity;0.0;True;0;{"summed_max": 3504.713845629906};reservoir;generator
-reservoir-DK;DK-electricity;0.0;True;0;{"summed_max": 1682.938978742075};reservoir;generator
-reservoir-FR;FR-electricity;18200.00000000006;True;0;{"summed_max": 1634.5565933534767};reservoir;generator
-reservoir-LU;LU-electricity;0.0;True;0;{"summed_max": 1682.938978742075};reservoir;generator
-reservoir-NL;NL-electricity;0.0;True;0;{"summed_max": 911.2163254167432};reservoir;generator
-reservoir-NO;NO-electricity;42472.9999999925;True;0;{"summed_max": 1822.0374877087168};reservoir;generator
-reservoir-PL;PL-electricity;0.0;True;0;{"summed_max": 896.8909094372642};reservoir;generator
-reservoir-SE;SE-electricity;21383.25306375192;True;0;{"summed_max": 1942.679516009677};reservoir;generator
+name;bus;capacity;carrier;marginal_cost;output_edge_parameters;tech;type
+rs-AT;AT-electricity;5675.9999999995325;water;0;{"summed_max": 1834.1838870331794};rs;dispatchable
+rs-BE;BE-electricity;0.0;water;0;{"summed_max": 801.214895705122};rs;dispatchable
+rs-CH;CH-electricity;8129.99999999843;water;0;{"summed_max": 2297.15090334559};rs;dispatchable
+rs-CZ;CZ-electricity;819.0000000000017;water;0;{"summed_max": 1184.7454237810766};rs;dispatchable
+rs-DE;DE-electricity;0.0;water;0;{"summed_max": 3504.713845629906};rs;dispatchable
+rs-DK;DK-electricity;0.0;water;0;{"summed_max": 1682.938978742075};rs;dispatchable
+rs-FR;FR-electricity;18200.00000000006;water;0;{"summed_max": 1634.5565933534767};rs;dispatchable
+rs-LU;LU-electricity;0.0;water;0;{"summed_max": 1682.938978742075};rs;dispatchable
+rs-NL;NL-electricity;0.0;water;0;{"summed_max": 911.2163254167432};rs;dispatchable
+rs-NO;NO-electricity;42472.9999999925;water;0;{"summed_max": 1822.0374877087168};rs;dispatchable
+rs-PL;PL-electricity;0.0;water;0;{"summed_max": 896.8909094372642};rs;dispatchable
+rs-SE;SE-electricity;21383.25306375192;water;0;{"summed_max": 1942.679516009677};rs;dispatchable

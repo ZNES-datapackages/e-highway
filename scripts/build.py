@@ -21,7 +21,7 @@ import electricity_excess
 import electricity_shortage
 import ehighway_capacities
 import ehighway_grid
-import electricity_demand_profiles
+import electricity_load_profiles
 import capacity_factors_pv
 import capacity_factors_wind
 import hydro_edge_parameters

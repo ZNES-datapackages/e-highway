@@ -1,13 +1,13 @@
-name;bus;capacity;dispatchable;output_edge_parameters;tech;type
-run-of-river-AT;AT-electricity;7401.1559;True;{"summed_max": 1834.1838870331794};run-of-river;generator
-run-of-river-BE;BE-electricity;331.9722;True;{"summed_max": 801.214895705122};run-of-river;generator
-run-of-river-CH;CH-electricity;4122.7012;True;{"summed_max": 2297.15090334559};run-of-river;generator
-run-of-river-CZ;CZ-electricity;454.8464;True;{"summed_max": 1184.7454237810766};run-of-river;generator
-run-of-river-DE;DE-electricity;4233.0194;True;{"summed_max": 3504.713845629906};run-of-river;generator
-run-of-river-DK;DK-electricity;13.3102;True;{"summed_max": 1682.938978742075};run-of-river;generator
-run-of-river-FR;FR-electricity;10318.6219;True;{"summed_max": 1634.5565933534767};run-of-river;generator
-run-of-river-LU;LU-electricity;149.2032;True;{"summed_max": 1682.938978742075};run-of-river;generator
-run-of-river-NL;NL-electricity;104.4347;True;{"summed_max": 911.2163254167432};run-of-river;generator
-run-of-river-NO;NO-electricity;28140.972;True;{"summed_max": 1822.0374877087168};run-of-river;generator
-run-of-river-PL;PL-electricity;2078.7976;True;{"summed_max": 896.8909094372642};run-of-river;generator
-run-of-river-SE;SE-electricity;10775.2278;True;{"summed_max": 1942.679516009677};run-of-river;generator
+name;bus;capacity;output_edge_parameters;tech;type
+ror-AT;AT-electricity;7401.1559;{"summed_max": 1834.1838870331794};ror;volatile
+ror-BE;BE-electricity;331.9722;{"summed_max": 801.214895705122};ror;volatile
+ror-CH;CH-electricity;4122.7012;{"summed_max": 2297.15090334559};ror;volatile
+ror-CZ;CZ-electricity;454.8464;{"summed_max": 1184.7454237810766};ror;volatile
+ror-DE;DE-electricity;4233.0194;{"summed_max": 3504.713845629906};ror;volatile
+ror-DK;DK-electricity;13.3102;{"summed_max": 1682.938978742075};ror;volatile
+ror-FR;FR-electricity;10318.6219;{"summed_max": 1634.5565933534767};ror;volatile
+ror-LU;LU-electricity;149.2032;{"summed_max": 1682.938978742075};ror;volatile
+ror-NL;NL-electricity;104.4347;{"summed_max": 911.2163254167432};ror;volatile
+ror-NO;NO-electricity;28140.972;{"summed_max": 1822.0374877087168};ror;volatile
+ror-PL;PL-electricity;2078.7976;{"summed_max": 896.8909094372642};ror;volatile
+ror-SE;SE-electricity;10775.2278;{"summed_max": 1942.679516009677};ror;volatile

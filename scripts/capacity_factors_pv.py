@@ -43,6 +43,6 @@ for c in df.columns:
     sequences_df[sequence_name] = df[c].values
 
 sequences_df.index = building.timeindex()
-path = building.write_sequences('generator-profiles.csv', sequences_df)
+path = building.write_sequences('volatile-profiles.csv', sequences_df)
 
 create_resource(path)
