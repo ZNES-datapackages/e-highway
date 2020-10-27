@@ -5,7 +5,7 @@ certifi==2018.1.18
 cffi==1.11.2
 chardet==3.0.4
 click==6.7
-cryptography==2.1.4
+cryptography==3.2
 datapackage==1.2.1
 decorator==4.1.2
 -e git+https://github.com/znes/datapackage-utilities.git@v0.1.1#egg=datapackage-utilities
