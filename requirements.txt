@@ -60,6 +60,6 @@ tornado==4.5.3
 traitlets==4.3.2
 unicodecsv==0.14.1
 uritemplate==2.0.0
-urllib3==1.22
+urllib3==1.26.5
 wcwidth==0.1.7
 xlrd==1.1.0
