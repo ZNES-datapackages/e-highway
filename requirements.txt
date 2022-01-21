@@ -16,7 +16,7 @@ github3.py==1.0.0a4
 idna==2.6
 ijson==2.3
 ipykernel==4.8.2
-ipython==6.2.1
+ipython==7.16.3
 ipython-genutils==0.2.0
 isodate==0.6.0
 jdcal==1.3
