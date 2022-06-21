@@ -27,7 +27,7 @@ jsonschema==2.6.0
 jupyter-client==5.2.2
 jupyter-core==4.4.0
 linear-tsv==1.1.0
-numpy==1.14.1
+numpy==1.22.0
 openpyxl==2.5.0
 pandas==0.22.0
 paramiko==2.3.1
